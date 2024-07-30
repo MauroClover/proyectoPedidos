@@ -35,6 +35,14 @@ class Components {
         return $img;
     }
     
+    public static function div($array){
+        $div='';
+        $div='<div class="'.$array[0].'"  id="'.$array[1].'">
+             '.$array[2].'
+            </div>
+        ';
+        return $div;
+    }
     
     //---------------------------botones-------------------------------
     public static function boton($titulo,$name,$value,$tipo,$class,$evento){
@@ -125,13 +133,13 @@ class Components {
       $encabezado=$array[0];
       $body=$array[1];
       $class=isset($array[2]) ? $array[2] : '';
-      $idClass=isset($array[3]) ? "id=".$array[3]." " : '';
+      $idTabla=isset($array[3]) ? $array[3] : '';
       foreach ($encabezado as $key => $value) {
         $titulo.='<th>'.$value.'</th>';
       }
 
       $lista='
-           <table class="table bordered  table-hover table-responsive '.$class.'" '.$idClass.'>
+           <table class="table bordered  table-hover table-responsive '.$class.'" id="'.$idTabla.'" >
                 <thead class="table-dark align-content-center">
                     <tr>
                     '.$titulo.'
@@ -149,7 +157,7 @@ class Components {
     public static function modal($titulo, $name, $body, $footer) {
         $modal = '
             <div class="modal fade" id="' . $name . '" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="' . $name . 'Label" aria-hidden="true">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header bg-info">
                             <h5 class="text-white text-center" id="' . $name . 'Label">' . $titulo . '</h5>

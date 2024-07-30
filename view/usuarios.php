@@ -3,50 +3,52 @@
 include_once("cabecera.php");
 include_once("modal/editarUser.php");
 include_once("modal/crearUser.php");
-echo $funcion->boton_modal('Crear Usuarios','crearUsuario','','','btn-success btn-sm','');
+$resultado=[];
+$cuerpo='';
+$filtro=$tipo=='C' ? "id=$user" : null;
+$resultado= Persona::listTodos($filtro);
 
+if ($tipo=='P') {
+foreach ($resultado as $key => $value) {
+    $cuerpo.='
+          <tr>
+            <td>'.$value['id'].'</td>
+            <td>'.$value['nombres'].'</td>
+            <td>'.$value['apellidos'].'</td>
+            <td>'.$value['identificacion'].'</td>
+            <td>'.$value['telefono'].'</td>
+            <td>'.$value['correo'].'</td>
+            <td>'.$value['tipo'].'</td>
+            <td>       
+            '.$funcion->boton_modal('editar','editarUsuario','editarUser',$value['id'],'btn-primary btn-sm','miFuncion').'
+            '.$funcion->boton_eliminar('EliminarUsuario',$value['id'],'usuarios').'
+            </td>
+        </tr>
+    ';
+}
+echo $funcion->boton_modal('Crear Usuarios','crearUsuario','','','btn-success btn-sm','');
+echo $funcion->tabla([ ['id','Nombre','Apellidos','Identificacion','Telefono','Correo','Tipo','Opcion'],$cuerpo ]);
+
+}else{
+echo '<center>'.
+        $funcion->div(['text-center col-6','',
+            $funcion->card('DATOS USUARIO',
+                $funcion->formulario(
+                    $funcion->input('idE',$resultado[0]['id'],'hidden','',1).
+                    $funcion->input('nom',$resultado[0]['nombres'],'text','Nombres',1).
+                    $funcion->input('ape',$resultado[0]['apellidos'],'text','Apellidos',1).
+                    $funcion->input('ident',$resultado[0]['identificacion'],'text','Identificacion',1).
+                    $funcion->input('tel',$resultado[0]['telefono'],'phone','Telefono',1).
+                    $funcion->input('cor',$resultado[0]['correo'],'text','Correo',1).
+                    $funcion->input('pass','','password','Clave',0).
+                    $funcion->boton('Modificar','modificar','modificarUser','submit','btn-primary btn-sm w-100 mt-2','')
+                )
+            ,'')
+        ]).
+    '</center>';
+    
+}
 ?>
-<div class="row">
-<div class="col-sm-6 col-md-12 col-lg-12">
-        <table  class="table table-hover table-responsive-sm " id="tabla_id">
-            <thead class="table-dark " id="tabla_editar">
-                <tr>
-                <th>Id</th><th>nombre</th><th>apellidos</th><th>identificacion</th><th>telefono</th><th>correo</th><th>tipo</th><th>opcion</th>
-                </tr>
-            </thead>
-            <tbody id="tableUsuario" class="bg-white">
-                <?php 
-                $resultado=[];
-                $resultado= Persona::listTodos(null);
-                foreach ($resultado as $key => $value) {
-                   $id=$value['id'];
-                   $nombres=$value['nombres'];
-                   $apellidos=$value['apellidos'];
-                   $identificacion=$value['identificacion'];
-                   $telefono=$value['telefono'];
-                   $correo=$value['correo'];
-                   $tipo=$value['tipo'];     
-                ?>
-                
-                <tr>
-                    <td><?= $id ?></td>
-                    <td><?= $nombres ?></td>
-                    <td><?= $apellidos?></td>
-                    <td><?= $identificacion?></td>
-                    <td><?= $telefono?></td>
-                    <td><?= $correo?></td>
-                    <td><?= $tipo?></td>
-                    <td>       
-                    <?= $funcion->boton_modal('editar','editarUsuario','editarUser',$id,'btn-primary btn-sm','miFuncion'); ?>
-                    <?= $funcion->boton_eliminar('EliminarUsuario',$id,'usuarios')?>
-                    </td>
-                </tr>
-                
-                <?php  }?>
-            </tbody>
-        </table>
-    </div>
-    </div>
 
  <script>
   

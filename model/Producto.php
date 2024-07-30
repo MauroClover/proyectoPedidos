@@ -13,7 +13,7 @@ class Producto {
         }
 
     public static function modificar($valores) {
-        $campos="nombre,talla,idpersona,fecha,idapartado";
+        $campos="id,nombre,talla,idpersona,fecha,idapartado";
         $retorna=Funciones::update(['producto',$campos,$valores]);
         return $retorna;
         }

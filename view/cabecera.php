@@ -10,6 +10,7 @@ if(isset($_SESSION['USUARIO'])) {
   $person=$_SESSION['USUARIO'];
         $nombreUsuario = $person['nombres']." ".$person['apellidos'];
         $user=$person['id'];
+        $tipo=$person['tipo'];
         date_default_timezone_set('America/Bogota');
         $fecha = new DateTime();
         $date=date("Y-m-d H:i:s");

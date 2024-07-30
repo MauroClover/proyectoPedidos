@@ -43,7 +43,7 @@ if (isset($_REQUEST['mensaje'])) $mensaje=$_REQUEST['mensaje'];
                     <label class="text-primary">Clave</label>
                     <input type="password" name="clave" class="form-control" placeholder="Password">
                     </div>
-                         <button type="submit" value="Ingresar" class="btn btn-primary my-2">Ingresar</button>
+                         <button type="submit" value="Ingresar" class="btn btn-primary btn-sm w-100 mt-2">Ingresar</button>
                     </form>
                </div>
             </div>
@@ -57,13 +57,13 @@ if (isset($_REQUEST['mensaje'])) $mensaje=$_REQUEST['mensaje'];
                 <h5 class="modal-title" id="registrar_clienteLabel">Registrar</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <form method="POST" action="controller/config/register.php">
+              <form method="POST" action="controller/registrar.php">
                   <div class="modal-body">
                     <center>
                      <table>
                          <body>
                             <tr>
-                                <td><label class="text-primary">Nombre</label></td><td><input type="text" name="nombre" class="form-control" required ></td>
+                                <td><label class="text-primary">Nombre</label></td><td><input type="text" name="nombres" class="form-control" required ></td>
                             </tr>
                             <tr>
                                 <td><label class="text-primary">Apellidos</label></td><td><input type="text" name="apellidos" class="form-control" required></td>

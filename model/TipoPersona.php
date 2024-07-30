@@ -35,13 +35,13 @@ class TipoPersona {
         
             case 'C':
                 $menu.="<li class='nav-item mt-2'>
-                        <a class='nav-link text-white' href='./apartadosCliente.php'>Apartados</a>
+                        <a class='nav-link text-white' href='./apartados.php'>Apartados</a>
                         </li>";
                 $menu.="<li class='nav-item mt-2'>
-                        <a class='nav-link text-white' href='./nuevoApartadoC.php'>Pedido</a>
+                        <a class='nav-link text-white' href='./productos.php'>Pedido</a>
                         </li>";
                 $menu.="<li class='nav-item mt-2'>
-                        <a class='nav-link text-white' href='./catalogoCliente.php'>Catalogo</a>
+                        <a class='nav-link text-white' href='./usuarios.php'>Usuario</a>
                         </li>"; 
                 
                 
